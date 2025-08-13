@@ -1,0 +1,59 @@
+---
+# 基础风格：Google（其他可选：LLVM, Chromium, Mozilla, WebKit）
+BasedOnStyle: Google
+
+# 语言：自动检测（支持 C++/C/Java/JavaScript/Objective-C/Proto 等）
+Language: Cpp
+
+# 缩进设置
+IndentWidth: 4              # 缩进宽度（Google默认2，此处改为4）
+TabWidth: 4                 # Tab宽度
+UseTab: Never               # 不使用Tab（只用空格）
+
+# 指针和引用对齐
+PointerAlignment: Left      # 指针符号靠左：int* ptr（Right：int *ptr）
+
+# 大括号换行风格（Google默认：Attach）
+BreakBeforeBraces: Attach   # 大括号不换行：void foo() {
+BraceWrapping:
+  AfterClass: false         # class后不换行
+  AfterFunction: true       # 函数定义后换行
+  AfterEnum: false
+  AfterStruct: false
+
+# 控制语句换行
+AllowShortIfStatementsOnASingleLine: true    # 允许短if单行：if (x) return;
+AllowShortLoopsOnASingleLine: true           # 允许短循环单行：while (x) count++;
+AlwaysBreakAfterReturnType: None             # 返回类型后不强制换行
+
+# 括号处理
+BinPackArguments: true      # 函数参数自动打包（避免过长行）
+BinPackParameters: true
+ColumnLimit: 120            # 行宽限制（默认80，此处放宽）
+AlignAfterOpenBracket: Align # 括号内对齐
+AlignEscapedNewlines: Right  # 行尾续符\右对齐
+
+# 空行控制
+MaxEmptyLinesToKeep: 2       # 最大连续空行数
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+# 空格设置
+SpacesBeforeTrailingComments: 2  # 行尾注释前空格数
+SpaceBeforeParens: ControlStatements # 控制语句括号前加空格：if (...
+SpacesInParentheses: false        # 括号内不加空格
+SpacesInSquareBrackets: false
+
+# 其他重要选项
+SortIncludes: true              # 自动排序#include
+IncludeBlocks: Regroup          # 按组排序：系统头文件在前
+IncludeCategories:
+  - Regex: '^<.*>'              # 系统头文件
+    Priority: 1
+  - Regex: '^".*"'              # 项目头文件
+    Priority: 2
+
+# C++11特性支持
+Standard: Cpp11                 # 使用C++11标准
+AllowShortFunctionsOnASingleLine: Inline # 短函数单行：{ return x; }
+DerivePointerAlignment: false   # 不自动推断指针对齐
+...

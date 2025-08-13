@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -g   CMakeFiles/base_function_test.dir/test/base_function_test.cpp.o CMakeFiles/base_function_test.dir/src/b_plus_tree.cpp.o CMakeFiles/base_function_test.dir/src/base_node.cpp.o CMakeFiles/base_function_test.dir/src/leaf_node.cpp.o CMakeFiles/base_function_test.dir/src/internal_node.cpp.o  -o base_function_test  -lgtest -lgtest_main -lpthread 
