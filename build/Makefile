@@ -123,19 +123,6 @@ base_function_test/fast:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/build
 .PHONY : base_function_test/fast
 
-#=============================================================================
-# Target rules for targets named main
-
-# Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main
-.PHONY : main
-
-# fast build rule for target.
-main/fast:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
-
 src/b_plus_tree.o: src/b_plus_tree.cpp.o
 
 .PHONY : src/b_plus_tree.o
@@ -143,7 +130,6 @@ src/b_plus_tree.o: src/b_plus_tree.cpp.o
 # target to build an object file
 src/b_plus_tree.cpp.o:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/b_plus_tree.cpp.o
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/b_plus_tree.cpp.o
 .PHONY : src/b_plus_tree.cpp.o
 
 src/b_plus_tree.i: src/b_plus_tree.cpp.i
@@ -153,7 +139,6 @@ src/b_plus_tree.i: src/b_plus_tree.cpp.i
 # target to preprocess a source file
 src/b_plus_tree.cpp.i:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/b_plus_tree.cpp.i
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/b_plus_tree.cpp.i
 .PHONY : src/b_plus_tree.cpp.i
 
 src/b_plus_tree.s: src/b_plus_tree.cpp.s
@@ -163,7 +148,6 @@ src/b_plus_tree.s: src/b_plus_tree.cpp.s
 # target to generate assembly for a file
 src/b_plus_tree.cpp.s:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/b_plus_tree.cpp.s
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/b_plus_tree.cpp.s
 .PHONY : src/b_plus_tree.cpp.s
 
 src/base_node.o: src/base_node.cpp.o
@@ -173,7 +157,6 @@ src/base_node.o: src/base_node.cpp.o
 # target to build an object file
 src/base_node.cpp.o:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/base_node.cpp.o
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base_node.cpp.o
 .PHONY : src/base_node.cpp.o
 
 src/base_node.i: src/base_node.cpp.i
@@ -183,7 +166,6 @@ src/base_node.i: src/base_node.cpp.i
 # target to preprocess a source file
 src/base_node.cpp.i:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/base_node.cpp.i
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base_node.cpp.i
 .PHONY : src/base_node.cpp.i
 
 src/base_node.s: src/base_node.cpp.s
@@ -193,7 +175,6 @@ src/base_node.s: src/base_node.cpp.s
 # target to generate assembly for a file
 src/base_node.cpp.s:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/base_node.cpp.s
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/base_node.cpp.s
 .PHONY : src/base_node.cpp.s
 
 src/internal_node.o: src/internal_node.cpp.o
@@ -203,7 +184,6 @@ src/internal_node.o: src/internal_node.cpp.o
 # target to build an object file
 src/internal_node.cpp.o:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/internal_node.cpp.o
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/internal_node.cpp.o
 .PHONY : src/internal_node.cpp.o
 
 src/internal_node.i: src/internal_node.cpp.i
@@ -213,7 +193,6 @@ src/internal_node.i: src/internal_node.cpp.i
 # target to preprocess a source file
 src/internal_node.cpp.i:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/internal_node.cpp.i
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/internal_node.cpp.i
 .PHONY : src/internal_node.cpp.i
 
 src/internal_node.s: src/internal_node.cpp.s
@@ -223,7 +202,6 @@ src/internal_node.s: src/internal_node.cpp.s
 # target to generate assembly for a file
 src/internal_node.cpp.s:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/internal_node.cpp.s
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/internal_node.cpp.s
 .PHONY : src/internal_node.cpp.s
 
 src/leaf_node.o: src/leaf_node.cpp.o
@@ -233,7 +211,6 @@ src/leaf_node.o: src/leaf_node.cpp.o
 # target to build an object file
 src/leaf_node.cpp.o:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/leaf_node.cpp.o
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/leaf_node.cpp.o
 .PHONY : src/leaf_node.cpp.o
 
 src/leaf_node.i: src/leaf_node.cpp.i
@@ -243,7 +220,6 @@ src/leaf_node.i: src/leaf_node.cpp.i
 # target to preprocess a source file
 src/leaf_node.cpp.i:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/leaf_node.cpp.i
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/leaf_node.cpp.i
 .PHONY : src/leaf_node.cpp.i
 
 src/leaf_node.s: src/leaf_node.cpp.s
@@ -253,7 +229,6 @@ src/leaf_node.s: src/leaf_node.cpp.s
 # target to generate assembly for a file
 src/leaf_node.cpp.s:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/src/leaf_node.cpp.s
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/leaf_node.cpp.s
 .PHONY : src/leaf_node.cpp.s
 
 test/base_function_test.o: test/base_function_test.cpp.o
@@ -283,33 +258,6 @@ test/base_function_test.cpp.s:
 	$(MAKE) -f CMakeFiles/base_function_test.dir/build.make CMakeFiles/base_function_test.dir/test/base_function_test.cpp.s
 .PHONY : test/base_function_test.cpp.s
 
-test/main.o: test/main.cpp.o
-
-.PHONY : test/main.o
-
-# target to build an object file
-test/main.cpp.o:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/test/main.cpp.o
-.PHONY : test/main.cpp.o
-
-test/main.i: test/main.cpp.i
-
-.PHONY : test/main.i
-
-# target to preprocess a source file
-test/main.cpp.i:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/test/main.cpp.i
-.PHONY : test/main.cpp.i
-
-test/main.s: test/main.cpp.s
-
-.PHONY : test/main.s
-
-# target to generate assembly for a file
-test/main.cpp.s:
-	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/test/main.cpp.s
-.PHONY : test/main.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -319,7 +267,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... base_function_test"
-	@echo "... main"
 	@echo "... src/b_plus_tree.o"
 	@echo "... src/b_plus_tree.i"
 	@echo "... src/b_plus_tree.s"
@@ -335,9 +282,6 @@ help:
 	@echo "... test/base_function_test.o"
 	@echo "... test/base_function_test.i"
 	@echo "... test/base_function_test.s"
-	@echo "... test/main.o"
-	@echo "... test/main.i"
-	@echo "... test/main.s"
 .PHONY : help
 
 

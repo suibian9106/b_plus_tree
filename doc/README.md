@@ -13,3 +13,6 @@ mkdir build
 cd build
 cmake ..
 make
+```
+## 内存泄漏
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./base_function_test

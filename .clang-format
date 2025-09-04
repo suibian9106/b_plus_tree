@@ -56,4 +56,3 @@ IncludeCategories:
 Standard: Cpp11                 # 使用C++11标准
 AllowShortFunctionsOnASingleLine: Inline # 短函数单行：{ return x; }
 DerivePointerAlignment: false   # 不自动推断指针对齐
-...
