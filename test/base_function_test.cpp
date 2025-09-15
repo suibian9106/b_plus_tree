@@ -362,7 +362,7 @@ TEST(BPlusTreePerformanceTest, FindThroughput) {
 // 测试混合操作的吞吐量
 TEST(BPlusTreePerformanceTest, MixedOperations) {
     BPlusTree<int> tree(100);
-    const int num_ops = 500000;
+    const int num_ops = 50000000;
 
     auto test_with_threads = [&](int num_threads, double insert_ratio, double delete_ratio) {
         std::vector<std::thread> threads;
