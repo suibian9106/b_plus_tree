@@ -14,5 +14,15 @@ cd build
 cmake ..
 make
 ```
+
 ## 内存泄漏
+```bash
+cd build
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./base_function_test
+```
+
+## 性能测试
+```bash
+cd build
+sudo perf record -g -F 99 ./base_function_test
+```
