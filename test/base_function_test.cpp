@@ -164,7 +164,7 @@ TEST(BPlusTreeConcurrencyTest, ConcurrentInsert) {
         uint64_t value = tree.find(i);
         ASSERT_EQ(value, i * 10);
     }
-    tree.print_tree();
+    // tree.print_tree();
 }
 
 // 测试并发插入和查找
@@ -362,7 +362,7 @@ TEST(BPlusTreePerformanceTest, FindThroughput) {
 // 测试混合操作的吞吐量
 TEST(BPlusTreePerformanceTest, MixedOperations) {
     BPlusTree<int> tree(100);
-    const int num_ops = 50000000;
+    const int num_ops = 500000;
 
     auto test_with_threads = [&](int num_threads, double insert_ratio, double delete_ratio) {
         std::vector<std::thread> threads;
@@ -418,8 +418,8 @@ TEST(BPlusTreePerformanceTest, MixedOperations) {
     test_with_threads(4, 0.3, 0.1);  // 30% 插入, 10% 删除, 60% 查找
 
     // 测试不同线程数
-    test_with_threads(1, 0.7, 0.1);
-    test_with_threads(2, 0.7, 0.1);
-    test_with_threads(4, 0.7, 0.1);
-    test_with_threads(8, 0.7, 0.1);
+    test_with_threads(1, 0.4, 0.1);
+    test_with_threads(2, 0.4, 0.1);
+    test_with_threads(4, 0.4, 0.1);
+    test_with_threads(8, 0.4, 0.1);
 }

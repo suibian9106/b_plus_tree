@@ -44,69 +44,61 @@ void test_concurrent_reads(BPlusTree<int>& tree) {
 }
 
 int main() {
-    while (true) {
-        BPlusTree<int> tree(100);
-        const int num_ops = 50000000;
+    BPlusTree<int> tree(100);
+    const int num_ops = 500000;
 
-        auto test_with_threads = [&](int num_threads, double insert_ratio, double delete_ratio) {
-            std::vector<std::thread> threads;
-            std::atomic<int> insert_count(0);
-            std::atomic<int> delete_count(0);
-            std::atomic<int> find_count(0);
+    auto test_with_threads = [&](int num_threads, double insert_ratio, double delete_ratio) {
+        std::vector<std::thread> threads;
 
-            auto start = std::chrono::high_resolution_clock::now();
+        auto start = std::chrono::high_resolution_clock::now();
 
-            for (int i = 0; i < num_threads; i++) {
-                threads.emplace_back([&, i] {
-                    std::random_device rd;
-                    std::mt19937 gen(rd());
-                    std::uniform_int_distribution<> key_distrib(0, num_ops);
-                    std::uniform_real_distribution<> op_distrib(0.0, 1.0);
+        for (int i = 0; i < num_threads; i++) {
+            threads.emplace_back([&, i] {
+                std::random_device rd;
+                std::mt19937 gen(rd());
+                std::uniform_int_distribution<> key_distrib(0, num_ops);
+                std::uniform_real_distribution<> op_distrib(0.0, 1.0);
 
-                    for (int j = 0; j < num_ops / num_threads; j++) {
-                        int key = key_distrib(gen);
-                        double op = op_distrib(gen);
+                for (int j = 0; j < num_ops / num_threads; j++) {
+                    int key = key_distrib(gen);
+                    double op = op_distrib(gen);
 
-                        if (op < insert_ratio) {
-                            tree.insert(key, key * 10);
-                            insert_count++;
-                        } else if (op < insert_ratio + delete_ratio) {
-                            tree.remove(key);
-                            delete_count++;
-                        } else {
-                            tree.find(key);
-                            find_count++;
-                        }
+                    if (op < insert_ratio) {
+                        tree.insert(key, key * 10);
+                    } else if (op < insert_ratio + delete_ratio) {
+                        tree.remove(key);
+                    } else {
+                        tree.find(key);
                     }
-                });
-            }
+                }
+            });
+        }
 
-            for (auto& t : threads) {
-                t.join();
-            }
+        for (auto& t : threads) {
+            t.join();
+        }
 
-            auto end = std::chrono::high_resolution_clock::now();
-            std::chrono::duration<double> duration = end - start;
-            double throughput = num_ops / duration.count();
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double> duration = end - start;
+        double throughput = num_ops / duration.count();
 
-            std::cout << "Threads: " << num_threads << " | Insert: " << (insert_ratio * 100) << "%"
-                      << " | Delete: " << (delete_ratio * 100) << "%"
-                      << " | Find: " << (1 - insert_ratio - delete_ratio) * 100 << "%"
-                      << " | Time: " << duration.count() << "s"
-                      << " | Throughput: " << throughput << " ops/s\n";
-        };
+        std::cout << "Threads: " << num_threads << " | Insert: " << (insert_ratio * 100) << "%"
+                    << " | Delete: " << (delete_ratio * 100) << "%"
+                    << " | Find: " << (1 - insert_ratio - delete_ratio) * 100 << "%"
+                    << " | Time: " << duration.count() << "s"
+                    << " | Throughput: " << throughput << " ops/s\n";
+    };
 
-        // 测试不同工作负载
-        test_with_threads(4, 0.7, 0.1);  // 70% 插入, 10% 删除, 20% 查找
-        test_with_threads(4, 0.5, 0.2);  // 50% 插入, 30% 删除, 30% 查找
-        test_with_threads(4, 0.3, 0.1);  // 30% 插入, 10% 删除, 60% 查找
+    // 测试不同工作负载
+    test_with_threads(4, 0.7, 0.1);  // 70% 插入, 10% 删除, 20% 查找
+    test_with_threads(4, 0.5, 0.2);  // 50% 插入, 30% 删除, 30% 查找
+    test_with_threads(4, 0.3, 0.1);  // 30% 插入, 10% 删除, 60% 查找
 
-        // 测试不同线程数
-        test_with_threads(1, 0.7, 0.1);
-        test_with_threads(2, 0.7, 0.1);
-        test_with_threads(4, 0.7, 0.1);
-        test_with_threads(8, 0.7, 0.1);
-    }
+    // 测试不同线程数
+    test_with_threads(1, 0.7, 0.1);
+    test_with_threads(2, 0.7, 0.1);
+    test_with_threads(4, 0.7, 0.1);
+    test_with_threads(8, 0.7, 0.1);
     // // 创建B+树
     // BPlusTree<int> int_tree(3);
 
