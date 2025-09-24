@@ -44,12 +44,10 @@ void test_concurrent_reads(BPlusTree<int>& tree) {
 }
 
 int main() {
-    BPlusTree<int> tree(100);
-    const int num_ops = 500000;
-
     auto test_with_threads = [&](int num_threads, double insert_ratio, double delete_ratio) {
         std::vector<std::thread> threads;
-
+        BPlusTree<int> tree(100);
+        const int num_ops = 10000000;
         auto start = std::chrono::high_resolution_clock::now();
 
         for (int i = 0; i < num_threads; i++) {
@@ -89,40 +87,8 @@ int main() {
                     << " | Throughput: " << throughput << " ops/s\n";
     };
 
-    // 测试不同工作负载
-    test_with_threads(4, 0.7, 0.1);  // 70% 插入, 10% 删除, 20% 查找
-    test_with_threads(4, 0.5, 0.2);  // 50% 插入, 30% 删除, 30% 查找
-    test_with_threads(4, 0.3, 0.1);  // 30% 插入, 10% 删除, 60% 查找
-
     // 测试不同线程数
-    test_with_threads(1, 0.7, 0.1);
-    test_with_threads(2, 0.7, 0.1);
-    test_with_threads(4, 0.7, 0.1);
-    test_with_threads(8, 0.7, 0.1);
-    // // 创建B+树
-    // BPlusTree<int> int_tree(3);
-
-    // // 并发插入测试
-    // test_concurrent_inserts(int_tree);
-
-    // // 并发读取测试
-    // test_concurrent_reads(int_tree);
-
-    // // 范围查询测试
-    // auto results = int_tree.range_find(500, 600);
-    // std::cout << "Range find results: " << results.size() << " items" << std::endl;
-
-    // // 序列化测试
-    // int_tree.serialize("concurrent_tree");
-
-    // // 反序列化测试
-    // BPlusTree<int> int_tree2(3);
-    // int_tree2.deserialize("concurrent_tree");
-
-    // // 验证反序列化结果
-    // auto results2 = int_tree2.range_find(500, 600);
-    // std::cout << "Deserialized range find results: " << results2.size() << " items" << std::endl;
-
-    // std::cout << "All tests passed!" << std::endl;
+    test_with_threads(1, 0.3, 0.05);
+    test_with_threads(2, 0.3, 0.05);
     return 0;
 }

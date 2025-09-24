@@ -53,7 +53,10 @@ template <typename Key>
 uint64_t BPlusTree<Key>::find(const Key& key) const {
     std::shared_lock<std::shared_mutex> lock(tree_mutex);
     root_mutex.lock_shared();
-    if (!root) return 0;
+    if (!root){
+        root_mutex.unlock_shared();
+        return 0;
+    } 
 
     // 查找叶子节点并获取共享锁
     std::queue<BaseNode<Key>*> unique_locked_queue;  //加了写锁的祖先节点,无用
@@ -74,8 +77,12 @@ uint64_t BPlusTree<Key>::find(const Key& key) const {
 
 template <typename Key>
 void BPlusTree<Key>::remove(const Key& key) {
+    std::shared_lock<std::shared_mutex> lock(tree_mutex);
     root_mutex.lock();
-    if (!root) return;
+    if (!root){
+        root_mutex.unlock();
+        return;
+    } 
 
     // 查找叶子节点并获取锁
     std::queue<BaseNode<Key>*> unique_locked_queue;  //加了写锁的祖先节点
@@ -120,7 +127,10 @@ std::vector<std::pair<Key, uint64_t>> BPlusTree<Key>::range_find(const Key& star
     std::vector<std::pair<Key, uint64_t>> results;
 
     root_mutex.lock_shared();
-    if (!root) return results;
+    if (!root) {
+        root_mutex.unlock_shared();
+        return results;
+    }
 
     // 查找起始叶子节点并获取共享锁
     std::queue<BaseNode<Key>*> unique_locked_queue;  //加了写锁的祖先节点,无用
@@ -632,6 +642,7 @@ void BPlusTree<Key>::handle_underflow(BaseNode<Key>* node) {
         root = parent->children[0];
         root->parent = nullptr;
         parent->children.clear();
+        root_mutex.unlock();
 
         delete parent;
     }
