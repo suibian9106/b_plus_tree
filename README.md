@@ -45,6 +45,5 @@ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./base_func
 ## 性能测试
 ```bash
 cd build
-sudo perf record -g -F 99 ./base_function_test
-sudo perf report
+./main
 ```
